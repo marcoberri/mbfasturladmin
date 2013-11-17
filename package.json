@@ -1,0 +1,31 @@
+{
+  "name": "mbfasturl-admin",
+  "version": "0.0.1",
+  "private": true,
+  "author": "Marco Berri <marcoberri@gmail.com> http://marcoberri.blogspot.com",
+  "description": "ad interface to manage/analyze mbfasturl data from http://mbfasturl.marcoberri.it",
+  "scripts": {
+    "start": "nodejs server.js"
+  },
+  "dependencies" : {
+    "express"   :  "latest",
+    "mongodb" :  "latest",
+    "log4js-mongodb" :  "latest",
+    "mongoose"    :  "latest",
+    "jshtml": "latest",
+    "stylus": "latest",
+    "ejs": "latest",
+    "connect": "latest",
+    "connect-mongostore":"latest",
+    "http-proxy":"latest",
+    "sha1":"latest",
+    "cron":"latest",
+    "time":"latest",
+    "express-minify":"latest"
+  },
+  "analyze": true,
+  "license": "APACHE",
+  "engines": {
+    "node": ">=0.10"
+  }
+}
