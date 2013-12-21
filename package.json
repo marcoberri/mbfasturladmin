@@ -1,6 +1,6 @@
 {
   "name": "mbfasturl-admin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "private": true,
   "author": "Marco Berri <marcoberri@gmail.com> http://marcoberri.blogspot.com",
   "description": "ad interface to manage/analyze mbfasturl data from http://mbfasturl.marcoberri.it",
@@ -21,7 +21,8 @@
     "sha1":"latest",
     "cron":"latest",
     "time":"latest",
-    "express-minify":"latest"
+    "express-minify":"latest",
+    "winston" : "latest"
   },
   "analyze": true,
   "license": "APACHE",

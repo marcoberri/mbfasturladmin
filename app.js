@@ -11,7 +11,7 @@ var cluster = require('cluster');
 var minify = require('express-minify');
 
 var routes = require('./app/routes/');
-//var config = require('./app/config/');
+var config = require('./app/config/');
 var user = require('./app/routes/user');
 var stats = require('./app/routes/stats');
 var urls = require('./app/routes/urls');
@@ -26,7 +26,7 @@ fs.readdirSync(models_path).forEach(function (file) {
   if (~file.indexOf('.js')) require(models_path + '/' + file)
  })
 
-mongoose.connect('mongodb://localhost/FastUrl');
+mongoose.connect('mongodb://'+config.mongo.server+ ':' + config.mongo.port + '/' + config.mongo.db);
 
 var db = mongoose.connection;
 db.on('error', 
@@ -45,10 +45,10 @@ app.set('port', process.env.PORT || arguments[0] || 3000);
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 
+app.use(express.bodyParser());
 app.use(express.favicon());
 app.use(express.cookieParser());
 app.use(express.logger('dev'));
-app.use(express.bodyParser());
 app.use(express.methodOverride());
 
 
