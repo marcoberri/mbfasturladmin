@@ -7,8 +7,9 @@ Ext.define('ExtMVC.view.Viewport', {
     layout: 'border',
     
     requires: [
-        'ExtMVC.view.urls.UrlsGrid'
-        ,'ExtMVC.view.logs.LogsGrid'
+        'ExtMVC.view.urls.UrlsGrid',
+        'ExtMVC.view.logs.LogsGrid',
+        'ExtMVC.view.dashboard.Dashboard'
     ],
     
     initComponent: function() {
@@ -29,7 +30,7 @@ Ext.define('ExtMVC.view.Viewport', {
                     xtype: 'container',
 	            layout      : 'column',
 		    labelAlign : 'right',
-		    bodyStyle: 'background-color: transparent',
+		    bodylStyle: 'background-color: transparent',
 		    items: [
 				{
 				   xtype : 'image', src : '/images/banner.jpg', 
@@ -47,11 +48,12 @@ Ext.define('ExtMVC.view.Viewport', {
                     region: 'center',
 
                     items: [
-                      /*  {
+                       {
                         title: 'Dashboard',
                         xtype: 'dashboard'
-                        },*/                    
-                        {
+                        },                   
+                        
+                       {
 			
 			title: 'Click',
 			layout: {type: 'hbox', align: 'stretch',autoScroll:false},

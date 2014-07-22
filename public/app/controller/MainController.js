@@ -17,9 +17,9 @@ Ext.define('ExtMVC.controller.MainController', {
 
 		'StatsUrlCountMonth',
 		'StatsUrlCountDay',
-		'StatsUrlCountYear',
+		'StatsUrlCountYear'//,
 
-//		'Dashboard.StatsSiteCount',
+//		'Dashboard.StatsDayClick'
 //		'Dashboard.StatsAllCount',
 //		'Dashboard.StatsBrowserCount',
 //		'Dashboard.StatsIpCount'
@@ -35,7 +35,8 @@ Ext.define('ExtMVC.controller.MainController', {
 		'StatsBrowserCount',
 		'StatsIpCount',
 		'StatsUrlBrowserCount',
-		'StatsUrlCountryCount'
+		'StatsUrlCountryCount',
+		'StatsDayClick'		
 	],
 
     views: ['urls.UrlsGrid',
@@ -54,7 +55,9 @@ Ext.define('ExtMVC.controller.MainController', {
 	    'chart.ChartPieLastBrowserClick',
 	    'chart.ChartPieLastCountryClick',
 
-//	    'dashboard.Dashboard',
+	    'dashboard.Dashboard',
+//	    'dashboard.BarDayClick',
+
 //  	    'dashboard.BarLastTotal',
 //	    'dashboard.ChartPieLastTotal',
 //	    'dashboard.ChartPieAllTotal',

@@ -7,8 +7,9 @@ var http = require('http');
 var path = require('path');
 var express = require('express');
 var mongoose = require('mongoose');
-var cluster = require('cluster');
 var minify = require('express-minify');
+var session = require('express-session');
+var cluster = require('cluster');
 
 var routes = require('./app/routes/');
 var config = require('./app/config/');
@@ -17,6 +18,10 @@ var stats = require('./app/routes/stats');
 var urls = require('./app/routes/urls');
 var logs = require('./app/routes/logs');
 var system = require('./app/routes/system');
+
+var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
+var cookieParser = require('cookie-parser');
 
 
 var arguments = process.argv.splice(2);
@@ -29,6 +34,7 @@ fs.readdirSync(models_path).forEach(function (file) {
 mongoose.connect('mongodb://'+config.mongo.server+ ':' + config.mongo.port + '/' + config.mongo.db);
 
 var db = mongoose.connection;
+
 db.on('error', 
       console.error.bind(console, 'connection error:')
       );
@@ -39,37 +45,32 @@ db.once('open', function callback () {
 
 
 
+var port = process.env.PORT || arguments[0] || 3000;
 var app = express();
 
-app.set('port', process.env.PORT || arguments[0] || 3000);
 app.set('views', __dirname + '/app/views');
 app.set('view engine', 'ejs');
 
-app.use(express.bodyParser());
-app.use(express.favicon());
-app.use(express.cookieParser());
-app.use(express.logger('dev'));
-app.use(express.methodOverride());
+app.use(cookieParser());
+app.use(bodyParser.urlencoded({extended:false}));
+app.use(methodOverride());
 
 
-var MongoStore = require("connect-mongostore")(express);
+var MongoStore = require("connect-mongostore")(session);
 
 var storeSession = new MongoStore({
     collection: 'App.Sessions',
     mongooseConnection: db
 });
 
-app.use(express.session({
-    key:'sid',
+app.use(session({
     secret: 'XXDEFSDFREEWFSDFSDVCSDF',
     store:storeSession
 }));
 
 
-app.use(app.router);
-
 app.use(minify());
-app.use(express.static(path.join(__dirname, '/public')));
+app.use(express.static(path.join(__dirname, '/public/')));
 
 //todo da spostare in un controller
 function checkAuth(req, res, next) {
@@ -98,13 +99,14 @@ app.use(function(err, req, res, next){
     res.send(500, 'Something broke!');
 });
     
-app.configure('development', function() {
+/*app.configure('development', function() {
   app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
 });
    
 app.configure('production', function() {
   app.use(express.errorHandler());
 });
+  */
      
 app.get('/', routes.index);
 app.get('/home', checkAuth, routes.home);
@@ -141,6 +143,6 @@ app.get('/users', checkAuth,user.list);
 app.get('/*', loggin);
 
 
-http.createServer(app).listen(app.get('port'), function(){
-  console.log('MBFastUrlAdmin server listening on port ' + app.get('port'));
+app.listen(port, function(){
+  console.log('MBFastUrlAdmin server listening on port ' + process.env.PORT || arguments[0] || 3000);
 });

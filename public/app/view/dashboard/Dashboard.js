@@ -9,15 +9,16 @@ Ext.define('ExtMVC.view.dashboard.Dashboard' ,{
 	},
 
     items: [
+    
         {
             height: 300,
             width: 300,
             layout: 'fit',
             margin: '5 5 5 5',
-            padding: '5 5 5 5',
-            items: [{ xtype: 'dashboard.chartPieLastTotal'}]
+            padding: '5 5 5 5'//,
+            //items: [{ xtype: 'dashboard.barDayClick'}]
         },
-        {
+/*        {
             height: 300,
             width: 300,
             layout: 'fit',
@@ -40,7 +41,7 @@ Ext.define('ExtMVC.view.dashboard.Dashboard' ,{
             margin: '5 5 5 5',
             padding: '5 5 5 5',
             items: [{ xtype: 'dashboard.chartPieAllTotal'}]
-        },
+        },*/
       /*  {
             height: 200,
             width: 200,

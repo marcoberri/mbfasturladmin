@@ -5,6 +5,7 @@ exports.login = function(req, res){
   if(req.session && req.session.logged )  {
     console.log("routes/login --> redirect /home");
     res.redirect('/home');
+    return;
   }
   
   var post = req.body;
@@ -12,10 +13,12 @@ exports.login = function(req, res){
       req.session.user_id = 'demo';
       req.session.logged = true;
       res.redirect('/home');
-    console.log("routes/login --> redirect /home");
+     console.log("routes/login --> redirect /home");
+    return;
    } else {
          res.redirect('/');
-    console.log("routes/login --> redirect /");
+        console.log("routes/login --> redirect /");
+        return;
    }
 
 };

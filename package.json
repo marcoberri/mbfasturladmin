@@ -2,14 +2,20 @@
   "name": "mbfasturl-admin",
   "version": "0.0.2",
   "private": true,
-  "author": "Marco Berri <marcoberri@gmail.com> http://marcoberri.blogspot.com",
-  "description": "ad interface to manage/analyze mbfasturl data from http://mbfasturl.marcoberri.it",
+  "author": "Marco Berri <marcoberri@gmail.com> http://tecniucume.blogspot.com",
+  "description": "ad interface to manage/analyze mbfasturl data from http://www.mbfu.it",
   "scripts": {
     "start": "nodejs server.js"
   },
   "dependencies" : {
     "express"   :  "latest",
     "mongodb" :  "latest",
+    "body-parser": "latest",
+    "cookie-parser": "latest",
+    "method-override":"latest",
+    "express-session":"latest",
+    "serve-favico":"latest",
+
     "log4js-mongodb" :  "latest",
     "mongoose"    :  "latest",
     "jshtml": "latest",
