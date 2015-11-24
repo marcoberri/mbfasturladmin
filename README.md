@@ -1,12 +1,16 @@
-MBFastUrlAdmin
-==============
+MBFastUrlAdmin V.2
+====================
 
-Nodejs Administration per il progetto MBFastUrl.
+Nodejs Administration BackEnd per il progetto MBFastUrl.
 
-<img src="https://raw.github.com/marcoberri/mbfasturladmin/master/screenshot/Cattura.PNG"/>
+progetto : https://github.com/marcoberri/mbfasturl
 
-<img src="https://raw.github.com/marcoberri/mbfasturladmin/master/screenshot/Cattura2.PNG"/>
+frontend admin : wip
 
-<img src="https://raw.github.com/marcoberri/mbfasturladmin/master/screenshot/Cattura3.PNG"/>
+backend admin : this project
+
+
+
+
 
 

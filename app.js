@@ -48,29 +48,12 @@ db.once('open', function callback () {
 var port = process.env.PORT || arguments[0] || 3000;
 var app = express();
 
-app.set('views', __dirname + '/app/views');
-app.set('view engine', 'ejs');
-
 app.use(cookieParser());
 app.use(bodyParser.urlencoded({extended:false}));
 app.use(methodOverride());
 
 
-var MongoStore = require("connect-mongostore")(session);
-
-var storeSession = new MongoStore({
-    collection: 'App.Sessions',
-    mongooseConnection: db
-});
-
-app.use(session({
-    secret: 'XXDEFSDFREEWFSDFSDVCSDF',
-    store:storeSession
-}));
-
-
 app.use(minify());
-app.use(express.static(path.join(__dirname, '/public/')));
 
 //todo da spostare in un controller
 function checkAuth(req, res, next) {
@@ -99,23 +82,8 @@ app.use(function(err, req, res, next){
     res.send(500, 'Something broke!');
 });
     
-/*app.configure('development', function() {
-  app.use(express.errorHandler({ dumpExceptions: true, showStack: true }));
-});
-   
-app.configure('production', function() {
-  app.use(express.errorHandler());
-});
-  */
-     
-app.get('/', routes.index);
-app.get('/home', checkAuth, routes.home);
-app.post('/login', routes.login);
-app.get('/logout', checkAuth,routes.logout);
-
 app.get('/api/urls',checkAuth,urls.index);
 app.get('/api/logs',checkAuth,logs.index);
-
 
 app.get('/api/stats/url/count',checkAuth,stats.urlCount);
 app.get('/api/stats/url/browser/count',checkAuth,stats.urlBrowserCount);
@@ -138,9 +106,6 @@ app.get('/api/system/appevents',checkAuth,system.appEvent);
 
 
 app.get('/users', checkAuth,user.list);
-
-
-app.get('/*', loggin);
 
 
 app.listen(port, function(){

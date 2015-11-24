@@ -1,6 +1,6 @@
 {
   "name": "mbfasturl-admin",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "private": true,
   "author": "Marco Berri <marcoberri@gmail.com> http://tecniucume.blogspot.com",
   "description": "ad interface to manage/analyze mbfasturl data from http://www.mbfu.it",

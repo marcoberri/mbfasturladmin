@@ -1,4 +1,3 @@
-
 var config = {};
 config.mongo = {};
 config.mongo.server = 'localhost';
